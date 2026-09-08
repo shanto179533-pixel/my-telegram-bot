@@ -2,14 +2,14 @@ import os
 import asyncio
 from flask import Flask
 from threading import Thread
-from telebot import TeleBot
+import telebot
 from telethon import TelegramClient
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 API_ID = int(os.environ.get("API_ID"))
 API_HASH = os.environ.get("API_HASH")
 
-bot = TeleBot(BOT_TOKEN)
+bot = telebot.TeleBot(BOT_TOKEN)
 client = TelegramClient('user_info_session', API_ID, API_HASH)
 
 app = Flask('')
@@ -61,4 +61,4 @@ if __name__ == '__main__':
     client.loop.run_until_complete(start_telethon())
     print("Bot started on Render!")
     bot.infinity_polling()
-  
+    
